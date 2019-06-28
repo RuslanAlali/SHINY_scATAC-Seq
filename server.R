@@ -8,21 +8,17 @@ colnames(graphy)=c("X","Y","type","sample")
 
 shinyServer(function(input, output,session) {
   
-  output$myPlot<- renderPlot({
-    tsize=input$dotSize
+  #output$myPlot<- renderPlot({
+   # tsize=input$dotSize
 #    print(tsize)
  #   ggplot(graphy,aes(X,Y,col=factor(sample)))+
   #    scale_colour_manual(name = "samples",values = c("brown3","brown2","cadetblue3"))+
    #   theme_classic()+
     #  geom_point(size=tsize)
-    hist(1:10)
-  }
+    #hist(1:10)
+#  }
     
   )
-  
-  
-  
-  
   
 }
 )
