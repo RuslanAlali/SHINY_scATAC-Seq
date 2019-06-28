@@ -7,8 +7,8 @@ shinyServer(
     sidebarPanel  (
                     selectInput("Peaks", "please select eak type",
                                 choices = c("Super peaks>=5 reads", "Normal peaks>=1 read") ) ,
-                    sliderInput("Amount of genes", "Select sample size",
-                                min=100, max=1000, value = 500, step = 50),
+                    sliderInput("dotSize", "Select sample size",
+                                min=1, max=10, value = 5, step = 1),
                     conditionalPanel("input.Peaks=='Super peaks>=5 reads'",
                                      textInput("Mean","please enter",5)),
                     conditionalPanel("input.Peaks=='Normal peaks>=1 read'",
@@ -18,7 +18,9 @@ shinyServer(
                     ),
     
     
-    mainPanel ("Main is here")
+    mainPanel (
+      plotOutput("myPlot")
+    )
     
     
   )
