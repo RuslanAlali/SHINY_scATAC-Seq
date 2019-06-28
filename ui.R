@@ -8,7 +8,9 @@ shinyServer(
                     selectInput("Peaks", "please select eak type",
                                 choices = c("Super peaks>=5 reads", "Normal peaks>=1 read") ) ,
                     sliderInput("dotSize", "Select sample size",
-                                min=1, max=10, value = 5, step = 1),
+                                min=0.1, max=5, value = 2.1, step = 0.2), 
+    #                sliderInput("dotSize", "Select sample size",
+     #                            min=1, max=10, value = 5, step = 1),
                     conditionalPanel("input.Peaks=='Super peaks>=5 reads'",
                                      textInput("Mean","please enter",5)),
                     conditionalPanel("input.Peaks=='Normal peaks>=1 read'",
@@ -19,7 +21,7 @@ shinyServer(
     
     
     mainPanel (
-      plotOutput("myPlot")
+      "Test" #plotOutput("myPlot")
     )
     
     
