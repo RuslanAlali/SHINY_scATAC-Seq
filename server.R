@@ -1,5 +1,5 @@
 #install.packages("ggplot2")
-#library(ggplot2)
+library(ggplot2)
 #tsneY = read.csv(file = "TSNE_scATAC.csv",row.names = 1)
 #our_small_peaky=read.csv(file = "colData.csv",row.names = 1)
 #graphy= data.frame(tsneY,our_small_peaky)
