@@ -12,11 +12,11 @@ shinyServer(function(input, output,session) {
     
     tsize=input$dotSize
 #    print(tsize)
- #   ggplot(graphy,aes(X,Y,col=factor(sample)))+
-  #    scale_colour_manual(name = "samples",values = c("brown3","brown2","cadetblue3"))+
-   #   theme_classic()+
-    #  geom_point(size=tsize)
-    plot(graphy$X,graphy$Y, cex=tsize,col=graphy$sample,pch=19)
+    ggplot(graphy,aes(X,Y,col=factor(sample)))+
+      scale_colour_manual(name = "samples",values = c("brown3","brown2","cadetblue3"))+
+      theme_classic()+
+      geom_point(size=tsize)
+    #plot(graphy$X,graphy$Y, cex=tsize,col=graphy$sample,pch=19)
   }
     
   )
