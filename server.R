@@ -16,7 +16,7 @@ shinyServer(function(input, output,session) {
   #    scale_colour_manual(name = "samples",values = c("brown3","brown2","cadetblue3"))+
    #   theme_classic()+
     #  geom_point(size=tsize)
-    plot(graphy$X,graphy$Y, cex=tsize)
+    plot(graphy$X,graphy$Y, cex=tsize,col=graphy$sample,pch=19)
   }
     
   )
