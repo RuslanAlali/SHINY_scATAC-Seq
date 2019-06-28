@@ -21,7 +21,7 @@ shinyServer(
     
     
     mainPanel (
-      getwd() #plotOutput("myPlot")
+      plotOutput("myPlot")
     )
     
     
