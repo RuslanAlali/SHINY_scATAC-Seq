@@ -12,14 +12,14 @@ shinyServer(function(input, output,session) {
   library(grid)
   library(png)
   
-  our_small_peaky=read.csv(file = "data/colData.csv",row.names = 1)
-  tsneY = read.csv(file = "data/TSNE_scATAC.csv",row.names = 1)
+  our_small_peaky=read.csv(file = "colData.csv",row.names = 1)
+  tsneY = read.csv(file = "TSNE_scATAC.csv",row.names = 1)
   
   graphy= data.frame(tsneY,our_small_peaky)
   colnames(graphy)=c("X","Y","type","sample")
   
   Ploting=NULL
-  image <- png::readPNG("img/background.png")
+  image <- png::readPNG("background.png")
 
 #-----------
 #Prepare the plots
