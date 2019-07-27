@@ -49,7 +49,7 @@ shinyServer(function(input, output,session) {
     } 
     
     # Add photo background
-    if (input$background) {plot1=plot1+ annotation_custom(rasterGrob(image, width = unit(1,"npc"), height = unit(1,"npc")), -Inf, Inf, -Inf, Inf) }else{plot1=plot1}
+   # if (input$background) {plot1=plot1+ annotation_custom(rasterGrob(image, width = unit(1,"npc"), height = unit(1,"npc")), -Inf, Inf, -Inf, Inf) }else{plot1=plot1}
   })
 
 #-----------
