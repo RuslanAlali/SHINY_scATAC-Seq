@@ -2,9 +2,9 @@
 #library(shiny)
 #runApp()
 #install.packages("png")
-library(ggplot2)
 
 shinyServer(function(input, output,session) {
+  library(ggplot2)
   our_small_peaky=read.csv(file = "colData.csv",row.names = 1)
   tsneY = read.csv(file = "TSNE_scATAC.csv",row.names = 1)
   
