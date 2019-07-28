@@ -3,6 +3,7 @@
 #runApp()
 #install.packages("png")
 #if (!require("pacman")) install.packages("pacman")
+#if (!require("png")) install.packages("png")
 
 
 shinyServer(function(input, output,session) {
@@ -47,6 +48,7 @@ shinyServer(function(input, output,session) {
     # Add photo background
     if (input$background) {
       #library(pacman)
+      if (!require("png")) install.packages("png")
       library(grid)
       library(png)
       image <- png::readPNG("background.png")
