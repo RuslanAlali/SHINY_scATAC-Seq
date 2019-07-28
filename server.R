@@ -46,7 +46,7 @@ shinyServer(function(input, output,session) {
     
     # Add photo background
     if (input$background) {
-      library(pacman)
+      #library(pacman)
       library(grid)
       library(png)
       image <- png::readPNG("background.png")
