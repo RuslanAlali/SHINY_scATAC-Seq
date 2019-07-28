@@ -3,7 +3,7 @@ shinyServer(
 
   fluidPage(
     #gene_list=reactive(read.csv(file="data/gene_list.csv", header = FALSE)),
-    
+    style = 'width:900px;',
     navbarPage("sc-ATAC-Seq explorer for Low Grade Gliomas",
                tabPanel("scATAC-Seq"),
                tabPanel("scRNA-Seq")
