@@ -8,12 +8,10 @@
 shinyServer(function(input, output,session) {
   
   library(ggplot2)
-  library(pacman)
-  library(grid)
  
   
-  our_small_peaky=read.csv(file = "colData.csv",row.names = 1)
-  tsneY = read.csv(file = "TSNE_scATAC.csv",row.names = 1)
+  our_small_peaky=read.csv(file = "data/colData.csv",row.names = 1)
+  tsneY = read.csv(file = "data/TSNE_scATAC.csv",row.names = 1)
   
   graphy= data.frame(tsneY,our_small_peaky)
   colnames(graphy)=c("X","Y","type","sample")
@@ -48,6 +46,8 @@ shinyServer(function(input, output,session) {
     
     # Add photo background
     if (input$background) {
+      library(pacman)
+      library(grid)
       library(png)
       image <- png::readPNG("background.png")
       plot1=plot1+ annotation_custom(rasterGrob(image, width = unit(1,"npc"), height = unit(1,"npc")), -Inf, Inf, -Inf, Inf) }
