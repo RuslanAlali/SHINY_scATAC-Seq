@@ -7,8 +7,8 @@ The nuclei were analyzed on Fluidigm C1 platform. The experiment started with 5 
 
 ## Data Analysis
 Some reads leaks from one cell to the neighbouring ones. This means that data are not reliable in raw form. A double-cleaning method was introduced and presented reasonable results. 
-The code for the reads cleaning, alignment, peak calling and annotation is avialable at:
-# HERE
+The code for the reads cleaning, alignment, peak calling and annotation is avialable at: /code 
+
 
 
 Common tools like ChromVar were tested, but the results were not satifactory. Sample separation was limited. Traditional methods rely on pathway enrichment or transcription factor enrichments to group cells.
