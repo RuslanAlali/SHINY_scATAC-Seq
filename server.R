@@ -18,8 +18,7 @@ shinyServer(function(input, output,session) {
   graphy= data.frame(tsneY,our_small_peaky)
   colnames(graphy)=c("X","Y","type","sample")
   
-  Ploting=NULL
-  image <- png::readPNG("background.png")
+  #image <- png::readPNG("background.png")
 
 #-----------
 #Prepare the plots
