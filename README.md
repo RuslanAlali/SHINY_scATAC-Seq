@@ -18,3 +18,4 @@ A simpler method might be calling peaks, however, uncertenties in the method lea
 This Shiny app comes wtih results of t-SNE analysis of hyper-peaks in scATAC-Seq of at least 5 reads per peak on 10Kbp.
 
 It is uploaded and runnning or temporary server on AWS cloud system.
+http://ec2-184-72-117-144.compute-1.amazonaws.com:3838/SHINY_scATAC-Seq/
