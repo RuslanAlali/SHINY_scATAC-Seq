@@ -44,7 +44,7 @@ shinyServer(function(input, output,session) {
           genes= rep(0,ncol(gene_matrix))
           genes=genes1+2*genes2
           #genes=as.numeric(factor(colSums(gene_matrix[c(input$selected_gene1,input$selected_gene2),])>1,labels=c(0,3)))-1
-          print(genes)
+          #print(genes)
          graphy= data.frame(tsneY,our_small_peaky,genes)
          colnames(graphy)=c("X","Y","type","sample","gene")
          plot1 <-  ggplot(graphy,aes(X,Y,col=factor(type),shape=factor(genes)))+
