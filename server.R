@@ -32,13 +32,23 @@ shinyServer(function(input, output,session) {
         geom_point(size=tsize)
     
       }else if (input$Col_group_radio=="type_id"){
-      plot1=ggplot(graphy,aes(X,Y,col=factor(type)))+
-        theme(plot.title = element_text("Explorer for sc-ATAC-Seq low grade glioma tumours"))+
-        scale_colour_manual(name = "Tumor type",values = c("brown4","cadetblue4"), labels = c("Astrocytoma","Oligodendroglioma"))+
-        theme_classic()+
-        geom_point(size=tsize)
+        plot1=ggplot(graphy,aes(X,Y,col=factor(type)))+
+          theme(plot.title = element_text("Explorer for sc-ATAC-Seq low grade glioma tumours"))+
+          scale_colour_manual(name = "Tumor type",values = c("brown4","cadetblue4"), labels = c("Astrocytoma","Oligodendroglioma"))+
+          theme_classic()+
+          geom_point(size=tsize)
+       }else if (input$Col_group_radio=="gene2_id"){
+          genes=as.numeric(factor(colSums(gene_matrix[c(input$selected_gene1,input$selected_gene2),])>1,labels=c(0,1)))-1
+         graphy= data.frame(tsneY,our_small_peaky,genes)
+         colnames(graphy)=c("X","Y","type","sample","gene")
+         plot1 <-  ggplot(graphy,aes(X,Y,col=factor(type),shape=factor(genes)))+
+           theme(plot.title = element_text("Explorer for sc-ATAC-Seq low grade glioma tumours", size=14, face="bold.italic"))+
+           scale_colour_manual(name = " Tumor type",values = c("brown4","cadetblue4"), labels = c("Astrocytoma","Oligodendroglioma"))+
+           scale_shape_manual(name  =paste(input$selected_gene,"peak"), values = c(1, 19),labels=c("FALSE", "TRUE")) +
+           theme_classic()+
+           geom_point(size=tsize)         
+       }else{
       
-    }else{
       genes=gene_matrix[input$selected_gene,]
       graphy= data.frame(tsneY,our_small_peaky,genes)
       colnames(graphy)=c("X","Y","type","sample","gene")
