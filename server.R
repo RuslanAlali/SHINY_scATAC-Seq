@@ -9,7 +9,7 @@
 shinyServer(function(input, output,session) {
   
   library(ggplot2)
-  if (!require("shinythemes")) install.packages("shinythemes")
+  install.packages("shinythemes")
   
   #gene_list=reactive({read.csv(file="data/gene_matrix.csv", header = FALSE)})
   
