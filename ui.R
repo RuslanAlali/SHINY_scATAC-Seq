@@ -1,31 +1,36 @@
 shinyServer(
   #setwd("/home/ros/Desktop/SHINY_scATAC-Seq-master")
-
-  fluidPage(
-    #gene_list=reactive(read.csv(file="data/gene_list.csv", header = FALSE)),
-    style = 'width:900px;',
-    navbarPage("sc-ATAC-Seq explorer for Low Grade Gliomas",
+  #install.packages("shinythemes")
+  fixedPage(
+    if (!require("shinythemes")) install.packages("shinythemes"),
+    
+      theme = shinytheme("flatly"),
+    navbarPage(
+               title = "LGG single cell explorer",
                tabPanel("scATAC-Seq"),
-               tabPanel("scRNA-Seq")
+               tabPanel("Integrative analysis with scRNA-Seq")
+    ),
+
+    
+    headerPanel  (h2("Explorer for scATAC-Seq low grade glioma tumours")),
+    headerPanel  ("\n"),
+    headerPanel  ("\n"),
+    column(12, align="center",
+           plotOutput("myPlot", width = "900px",height = "450px")
     ),
     
-    headerPanel  (h2("Explorer for sc-ATAC-Seq low grade glioma tumours")),
-    headerPanel  ("\n"),
-
-     plotOutput("myPlot", width = "900px",height = "450px"),
-    
     br(),
     br(),
     br(),
     br(),
     br(),
     
-    fluidRow(
-    column(4, offset = 1,
+    fixedRow(
+    column(3, offset = 1,
            radioButtons("Col_group_radio", "Color grouping by:",
                         c('Samples'= 'sample_id', 'Diagnosis'='type_id', 'Gene related'='gene_id', 'Compare 2 genes'='gene2_id'))    ),
     
-    column(4, 
+    column(3, 
            conditionalPanel(
              condition = "input.Col_group_radio == 'gene_id'",
              selectInput("selected_gene", "Choose a gene:",
@@ -39,7 +44,7 @@ shinyServer(
                          choices = list_genes, selected = 'OLIG2' ))
            ),
     
-    column(3,
+    column(4,
            h3(span(strong(em("Settings:")), style = "color:#212F3D")),
            br(),
            sliderInput("dotSize", strong("Select dot size"),
