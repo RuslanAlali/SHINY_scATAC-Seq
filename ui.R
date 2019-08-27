@@ -2,7 +2,6 @@ shinyServer(
   #setwd("/home/ros/Desktop/SHINY_scATAC-Seq-master")
   #install.packages("shinythemes")
   fixedPage(
-    if (!require("shinythemes")) install.packages("shinythemes"),
     
       theme = shinytheme("flatly"),
     navbarPage(
