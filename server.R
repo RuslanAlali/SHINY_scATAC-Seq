@@ -11,10 +11,6 @@ shinyServer(function(input, output,session) {
   
   library(ggplot2)
   
-  #gene_list=reactive({read.csv(file="data/gene_matrix.csv", header = FALSE)})
-  
-  our_small_peaky=read.csv(file = "data/colData.csv",row.names = 1)
-  tsneY = read.csv(file = "data/TSNE_scATAC.csv",row.names = 1)
   
   graphy= data.frame(tsneY,our_small_peaky)
   colnames(graphy)=c("X","Y","type","sample")
