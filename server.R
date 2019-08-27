@@ -4,6 +4,7 @@
 #install.packages("png")
 #if (!require("pacman")) install.packages("pacman")
 #if (!require("png")) install.packages("png")
+if (!require("shinythemes")) install.packages("shinythemes")
 
 
 shinyServer(function(input, output,session) {

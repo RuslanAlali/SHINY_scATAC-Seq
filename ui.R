@@ -3,7 +3,7 @@ shinyServer(
   #install.packages("shinythemes")
   fixedPage(
     
-      theme = shinytheme("flatly"),
+     # theme = shinytheme("flatly"),
     navbarPage(
                title = "LGG single cell explorer",
                tabPanel("scATAC-Seq"),
