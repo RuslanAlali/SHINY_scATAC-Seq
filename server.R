@@ -4,13 +4,13 @@
 #install.packages("png")
 #if (!require("pacman")) install.packages("pacman")
 #if (!require("png")) install.packages("png")
-if (!require("shinythemes")) install.packages("shinythemes")
 
 
 shinyServer(function(input, output,session) {
   
   library(ggplot2)
- 
+  if (!require("shinythemes")) install.packages("shinythemes")
+  
   #gene_list=reactive({read.csv(file="data/gene_matrix.csv", header = FALSE)})
   
   our_small_peaky=read.csv(file = "data/colData.csv",row.names = 1)
