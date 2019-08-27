@@ -9,7 +9,6 @@
 shinyServer(function(input, output,session) {
   
   library(ggplot2)
-  install.packages("shinythemes")
   
   #gene_list=reactive({read.csv(file="data/gene_matrix.csv", header = FALSE)})
   
@@ -38,6 +37,8 @@ shinyServer(function(input, output,session) {
           scale_colour_manual(name = "Tumor type",values = c("brown4","cadetblue4"), labels = c("Astrocytoma","Oligodendroglioma"))+
           theme_classic()+
           geom_point(size=tsize)
+        install.packages("shinythemes")
+        
        
         }else if (input$Col_group_radio=="gene2_id"){
           genes1=gene_matrix[input$selected_gene1,]
