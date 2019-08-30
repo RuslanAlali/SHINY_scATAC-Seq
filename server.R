@@ -54,7 +54,6 @@ shinyServer(function(input, output,session) {
          table1<-table(t(genes))
          names(table1)<-c("None",input$selected_gene1,input$selected_gene2,"both")
          table1=data.frame(table1)
-         print(head(genes))
          colnames(table1)<-c("Gene", "Total_count")
          table1=cbind(table1,Astro=c(sum(genes[,graphy$type=="astro"]==0),
                                      sum(genes[,graphy$type=="astro"]==1),
