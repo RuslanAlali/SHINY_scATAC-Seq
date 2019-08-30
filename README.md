@@ -1,5 +1,5 @@
 # SHINY_scATAC-Seq
-A Shiny app for scATAC-Seq data on Fluidigm C1-800 for low gade glioma
+A Shiny app to explore scATAC-Seq data on Fluidigm C1-800 for low gade glioma
 
 ## Samples
 Samples were collected from university hospital /Kopf-Klinik in Heidelberg.
