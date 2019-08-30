@@ -55,7 +55,7 @@ shinyServer(
            sliderInput("dotSize", strong("Select dot size"),
                        min=0.1, max=5, value = 2.1, step = 0.2), 
            br(),
-           checkboxInput('background', strong('Guiding background'), value = T),
+           checkboxInput('background', strong('Guiding background'), value = F),
            br(),
            downloadButton(outputId="download_image",label = "Download plot")
     )

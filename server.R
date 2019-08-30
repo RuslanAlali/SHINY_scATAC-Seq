@@ -87,6 +87,8 @@ shinyServer(function(input, output,session) {
       table0=cbind(table0,Oligo=c(length(gene_matrix[input$selected_gene,graphy$type=="Codel"])-sum(gene_matrix[input$selected_gene,graphy$type=="Codel"]),
                                   sum(gene_matrix[input$selected_gene,graphy$type=="Codel"])))
       colnames(table0)<-c("Gene", "Total","Astro","Oligo")
+      tableX<-reactive(table0)
+      
       output$myTable <- renderTable({
         table0
       }  )
