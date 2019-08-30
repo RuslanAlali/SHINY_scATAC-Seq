@@ -29,21 +29,27 @@ shinyServer(
            radioButtons("Col_group_radio", "Color grouping by:",
                         c('Samples'= 'sample_id', 'Diagnosis'='type_id', 'Gene related'='gene_id', 'Compare 2 genes'='gene2_id'))    ),
     
-    column(3, 
+    column(5, 
            conditionalPanel(
              condition = "input.Col_group_radio == 'gene_id'",
              selectInput("selected_gene", "Choose a gene:",
-                         choices = list_genes, selected = 'EGR1' )),
+                         choices = list_genes, selected = 'EGR1' ),
+             tableOutput("myTable")
+           ),
+           
            conditionalPanel(
              condition = "input.Col_group_radio == 'gene2_id'",
              selectInput("selected_gene1", "Choose a gene:",
                          choices = list_genes, selected = 'EGR1' ),
            
              selectInput("selected_gene2", "Choose a 2nd gene:",
-                         choices = list_genes, selected = 'OLIG2' ))
+                         choices = list_genes, selected = 'OLIG2' ),
+             tableOutput("myTable1")
+             )
+           
            ),
     
-    column(4,
+    column(3,
            h3(span(strong(em("Settings:")), style = "color:#212F3D")),
            br(),
            sliderInput("dotSize", strong("Select dot size"),

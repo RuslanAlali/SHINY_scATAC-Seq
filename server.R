@@ -11,7 +11,6 @@ shinyServer(function(input, output,session) {
   
   library(ggplot2)
   
-  
   graphy= data.frame(tsneY,our_small_peaky)
   colnames(graphy)=c("X","Y","type","sample")
   
@@ -27,6 +26,7 @@ shinyServer(function(input, output,session) {
         scale_colour_manual(values = c("brown4","brown2","coral3","cadetblue3","cadetblue4"), labels = c("Astro1","Astro2","Astro3","Oligo1","Oligo2"),name = "By sample               .")+
         theme_classic()+
         geom_point(size=tsize)
+
     
       }else if (input$Col_group_radio=="type_id"){
         plot1=ggplot(graphy,aes(X,Y,col=factor(type)))+
@@ -34,6 +34,7 @@ shinyServer(function(input, output,session) {
           scale_colour_manual(name = "Tumor type",values = c("brown4","cadetblue4"), labels = c("Astrocytoma","Oligodendroglioma"))+
           theme_classic()+
           geom_point(size=tsize)
+
         
        
         }else if (input$Col_group_radio=="gene2_id"){
@@ -41,9 +42,7 @@ shinyServer(function(input, output,session) {
           genes2=gene_matrix[input$selected_gene2,]
           genes= rep(0,ncol(gene_matrix))
           genes=genes1+2*genes2
-          #genes=as.numeric(factor(colSums(gene_matrix[c(input$selected_gene1,input$selected_gene2),])>1,labels=c(0,3)))-1
-          #print(genes)
-         graphy= data.frame(tsneY,our_small_peaky,genes)
+          graphy= data.frame(tsneY,our_small_peaky,genes)
          colnames(graphy)=c("X","Y","type","sample","gene")
          plot1 <-  ggplot(graphy,aes(X,Y,col=factor(type),shape=factor(genes)))+
            theme(plot.title = element_text("Explorer for sc-ATAC-Seq low grade glioma tumours", size=14, face="bold.italic"))+
@@ -51,7 +50,25 @@ shinyServer(function(input, output,session) {
            scale_shape_manual(name  =paste(input$selected_gene1,"and",input$selected_gene2,"peaks"), values = c(1, 6, 8 ,19),labels=c("None",input$selected_gene1,input$selected_gene2,"Both")) +
            theme_classic()+
            geom_point(size=tsize)         
-      
+         
+         table1<-table(t(genes))
+         names(table1)<-c("None",input$selected_gene1,input$selected_gene2,"both")
+         table1=data.frame(table1)
+         print(head(genes))
+         colnames(table1)<-c("Gene", "Total_count")
+         table1=cbind(table1,Astro=c(sum(genes[,graphy$type=="astro"]==0),
+                                     sum(genes[,graphy$type=="astro"]==1),
+                                     sum(genes[,graphy$type=="astro"]==2),
+                                     sum(genes[,graphy$type=="astro"]==3)) )
+         table1=cbind(table1,Oligo=c(sum(genes[,graphy$type=="Codel"]==0),
+                                     sum(genes[,graphy$type=="Codel"]==1),
+                                     sum(genes[,graphy$type=="Codel"]==2),
+                                     sum(genes[,graphy$type=="Codel"]==3)))
+                                     
+         colnames(table1)<-c("Gene", "Total","Astro","Oligo")
+         output$myTable1<- renderTable({
+           table1
+         }  )
           }else{
       
       genes=gene_matrix[input$selected_gene,]
@@ -63,7 +80,18 @@ shinyServer(function(input, output,session) {
         scale_shape_manual(name  =paste(input$selected_gene,"peaks"), values = c(1, 19),labels=c("FALSE", "TRUE")) +
         theme_classic()+
         geom_point(size=tsize)
-    } 
+      table0<-table(t(genes))
+      names(table0)<-c("None",input$selected_gene)
+      table0=data.frame(table0)
+      table0=cbind(table0,Astro=c(length(gene_matrix[input$selected_gene,graphy$type=="astro"])-sum(gene_matrix[input$selected_gene,graphy$type=="astro"]),
+                                  sum(gene_matrix[input$selected_gene,graphy$type=="astro"])))
+      table0=cbind(table0,Oligo=c(length(gene_matrix[input$selected_gene,graphy$type=="Codel"])-sum(gene_matrix[input$selected_gene,graphy$type=="Codel"]),
+                                  sum(gene_matrix[input$selected_gene,graphy$type=="Codel"])))
+      colnames(table0)<-c("Gene", "Total","Astro","Oligo")
+      output$myTable <- renderTable({
+        table0
+      }  )
+                } 
     
     # Add photo background
     if (input$background) {
@@ -83,7 +111,9 @@ shinyServer(function(input, output,session) {
   output$myPlot<- renderPlot({
       print(plotReactive())
     }  )
+
   
+    
 #-----------
 #Download image
 #-----------
