@@ -65,6 +65,7 @@ shinyServer(function(input, output,session) {
                                      sum(genes[,graphy$type=="Codel"]==3)))
                                      
          colnames(table1)<-c("Gene", "Total","Astro","Oligo")
+         #render stat table
          output$myTable1<- renderTable({
            table1
          }  )
@@ -88,7 +89,7 @@ shinyServer(function(input, output,session) {
                                   sum(gene_matrix[input$selected_gene,graphy$type=="Codel"])))
       colnames(table0)<-c("Gene", "Total","Astro","Oligo")
       tableX<-reactive(table0)
-      
+      #render stat table
       output$myTable <- renderTable({
         table0
       }  )

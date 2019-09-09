@@ -6,8 +6,8 @@ shinyServer(
      # theme = shinytheme("flatly"),
     navbarPage(
                title = "LGG single cell explorer",
-               tabPanel("scATAC-Seq"),
-               tabPanel("Integrative analysis with scRNA-Seq")
+               tabPanel("scATAC-Seq")#,
+               #tabPanel("Integrative analysis with scRNA-Seq")
     ),
 
     
