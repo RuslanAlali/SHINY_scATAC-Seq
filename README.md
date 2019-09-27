@@ -19,4 +19,4 @@ This Shiny app comes wtih results of t-SNE analysis of hyper-peaks in scATAC-Seq
 
 It is uploaded and runnning on a temporary server with AWS cloud system. The connection has no SSL, thus some servers in academia might block the connection.
 
-shiny.turcanlab.org
+http://shiny.turcanlab.org
