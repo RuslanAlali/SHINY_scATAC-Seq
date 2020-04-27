@@ -1,5 +1,5 @@
 # SHINY_scATAC-Seq
-A Shiny app to explore scATAC-Seq data on Fluidigm C1-800 for low gade glioma. **The experiment is described in the article: Al-Ali R, et al. Single-nucleus chromatin accessibility reveals intratumoral epigenetic heterogeneity in IDH1 mutant gliomas. Acta Neuropathol Commun. 2019;7(1):201. Published 2019 Dec 5. doi:10.1186/s40478-019-0851-y**
+A Shiny app to explore scATAC-Seq data on Fluidigm C1-800 for low gade glioma. The experiment is described in the article: **Al-Ali R, et al. Single-nucleus chromatin accessibility reveals intratumoral epigenetic heterogeneity in IDH1 mutant gliomas. Acta Neuropathol Commun. 2019;7(1):201. Published 2019 Dec 5. doi:10.1186/s40478-019-0851-y**
 
 ## Samples
 Samples were collected from university hospital /Kopf-Klinik in Heidelberg.
